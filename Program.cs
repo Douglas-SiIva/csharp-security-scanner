@@ -1,8 +1,4 @@
-﻿using CsharpSecurityScanner.Infrastructure.Detectors;
+﻿using CsharpSecurityScanner.Application.Services;
 
-var detector = new SqlInjectionDetector();
-
-Console.WriteLine($"Detector: {detector.DetectorName}");
-Console.WriteLine($"Test 1: {detector.IsVulnerable("SELECT * FROM users")}");
-Console.WriteLine($"Test 2: {detector.IsVulnerable("Hello World")}");
-Console.WriteLine($"Description: {detector.GetVulnerabilityDescription()}");
+var scanner = new SecurityScanner();
+scanner.RunScan("SELECT * FROM users WHERE id = 1");
